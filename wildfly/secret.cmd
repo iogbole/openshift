@@ -1,0 +1,1 @@
+oc create secret generic appd-secret --from-literal=appd-key="key"
