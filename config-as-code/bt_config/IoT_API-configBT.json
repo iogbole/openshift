@@ -1,0 +1,70 @@
+{ 
+    
+  "dotnet_poco_rules": [
+   {
+     "include_or_exclude_rule": "INCLUDE",
+     "rule_name": "Services.DealHttpPost.PostRequest",
+     "class_name": "guibosFeed.Services.DealHttpPost",
+     "class_matching_condition": "EQAULS",
+     "method_name": "PostRequest",
+     "method_matching_condition": "EQUALS",
+     "priority": "40"
+    },
+    {
+     "include_or_exclude_rule": "INCLUDE",
+     "rule_name": "DataRepository.GuibosDealRepository.getDealXml",
+     "class_name": "guibosFeed.DataRepository.GuibosDealRepository",
+     "class_matching_condition":"EQAULS",
+     "method_name": "getDealXml",
+     "method_matching_condition":"EQUALS",
+     "priority": "40"
+    },
+    {
+     "include_or_exclude_rule": "INCLUDE",
+     "rule_name": "DataClasses.GUIBOS_FEED_TYPE.get_RECORD_SOURCE",
+     "class_name": "guibosFeed.DataClasses.GUIBOS_FEED_TYPE",
+     "class_matching_condition": "EQAULS",
+     "method_name": "get_RECORD_SOURCE",
+     "method_matching_condition":"EQUALS",
+     "priority": "10"
+    },
+    {
+     "include_or_exclude_rule": "INCLUDE",
+     "rule_name": "DataRepository.OraclePackageCall",
+     "class_name": "guibosFeed.DataRepository.OraclePackageCall",
+     "class_matching_condition":"EQAULS",
+     "method_name": "Execute",
+     "method_matching_condition":"EQUALS",
+     "priority": "10"
+    },
+    {
+     "include_or_exclude_rule": "INCLUDE",
+     "rule_name": "Services.DequeueSync.getDeal",
+     "class_name": "guibosFeed.Services.DequeueSync",
+     "class_matching_condition": "EQAULS",
+     "method_name": "getDeal",
+     "method_matching_condition": "EQUALS",
+     "priority": "40"
+    },
+    {
+     "include_or_exclude_rule": "INCLUDE",
+     "rule_name": "Services.DequeueSync.DequeueFromQueue",
+     "class_name": "guibosFeed.Services.DequeueSync",
+     "class_matching_condition":"EQAULS",
+     "method_name": "DequeueFromQueue",
+     "method_matching_condition":"EQUALS",
+     "priority": "40"
+    },
+    {
+     "include_or_exclude_rule": "INCLUDE",
+     "rule_name": "Services.DequeueSync.openConnection",
+     "class_name": "guibosFeed.Services.DequeueSync",
+     "class_matching_condition":"EQAULS",
+     "method_name": "openConnection",
+     "method_matching_condition": "EQUALS",
+     "priority": "20"
+    }
+    
+ ]
+ 
+}

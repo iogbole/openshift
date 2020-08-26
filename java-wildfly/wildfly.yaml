@@ -2,16 +2,16 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    name: loan-services
-  name: loan-services
+    name: employment-services
+  name: employment-services
 spec:
   selector:
     matchLabels:
-      name: loan-services
+      name: employment-services
   template:
     metadata:
       labels:
-        name: loan-services
+        name: employment-services
     spec:
       containers:
       - envFrom:
@@ -20,7 +20,6 @@ spec:
         env:
         - name: APPDYNAMICS_AGENT_TIER_NAME
           value: WildFly
-
         - name: APPDYNAMICS_AGENT_UNIQUE_HOST_ID
           valueFrom:
             fieldRef:
@@ -31,6 +30,8 @@ spec:
             secretKeyRef:
               key: appd-key
               name: appd-secret
+        - name: APPDYNAMICS_AGENT_APPLICATION_NAME
+          value: Employee_Service
         - name: JAVA_OPTS
           value: ' -Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addresses=true  
             -Djboss.modules.system.pkgs="org.jboss.byteman,com.singularity" 
@@ -43,7 +44,7 @@ spec:
             -Dappdynamics.agent.reuse.nodeName.prefix=$(APPDYNAMICS_AGENT_REUSE_NODE_NAME_PREFIX) -javaagent:/opt/appdynamics-java/javaagent.jar '
         image: iogbole/wildfly-springboot-app #iogbole/wildfly-app
         imagePullPolicy: IfNotPresent
-        name: loan-services
+        name: employment-services
         ports:
         - containerPort: 8080
         - containerPort: 9990
@@ -69,7 +70,6 @@ spec:
         - mountPath: /opt/temp
           name: appd-agent-repo-java
       restartPolicy: Always
-      #serviceAccountName: appd-account
       volumes:
       - emptyDir: {}
         name: appd-agent-repo-java
@@ -81,7 +81,7 @@ metadata:
   name: web-front-end
 spec:
   selector:
-    name: loan-services
+    name: employment-services
   ports:
   - name: "8080"
     port: 8080
