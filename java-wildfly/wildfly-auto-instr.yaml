@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    name: employment-services
+  name: employment-services
+spec:
+  selector:
+    matchLabels:
+      name: employment-services
+  template:
+    metadata:
+      labels:
+        name: employment-services
+    spec:
+      containers:
+      - env:
+        - name: JAVA_OPTS
+          value: ' -Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addresses=true 
+            -Djboss.modules.system.pkgs="org.jboss.byteman,com.singularity" '
+        image: iogbole/wildfly-springboot-app #iogbole/wildfly-app
+        imagePullPolicy: IfNotPresent
+        name: employment-services
+        ports:
+        - containerPort: 8080
+        - containerPort: 9990
+        - containerPort: 7600
+        - containerPort: 8888
+        resources: {}
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-front-end
+spec:
+  selector:
+    name: employment-services
+  ports:
+  - name: "8080"
+    port: 8080
+    targetPort: 8080
+  type: NodePort
