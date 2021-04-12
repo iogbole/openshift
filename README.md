@@ -30,6 +30,7 @@ While in appdynamics account, let's add view/edit rights to the project for the 
 
 
 Grant developer access to appdynamics project
+
 `oc policy add-role-to-user view developer`
 
 `oc policy add-role-to-user edit developer`
