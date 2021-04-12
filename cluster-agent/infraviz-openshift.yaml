@@ -93,10 +93,10 @@ metadata:
   name: appd-infraviz
   #namespace: appdynamics
 spec:
-  controllerUrl: "http://openshift-2072nosshcon-deye54z3.appd-cx.com:8090"
+  controllerUrl: "https://fieldlabs.saas.appdynamics.com:443"
   image: "docker.io/appdynamics/machine-agent-analytics:latest"
-  account: "customer1"
-  globalAccount: "customer1_9d92e650-da96-419b-afcf-a99c6d5a6379"
+  account: "fieldlabs"
+  globalAccount: "fieldlabs_6d"
   netVizPort: 3892
   enableDockerViz: "false"
   enableMasters: true

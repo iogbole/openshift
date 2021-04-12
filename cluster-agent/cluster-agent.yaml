@@ -4,9 +4,22 @@ metadata:
   name: k8s-cluster-agent
   namespace: appdynamics
 spec:
-  controllerUrl: "http://openshift-2072nosshcon-deye54z3.appd-cx.com:8090"
-  account: "customer1"
+  controllerUrl: "https://fieldlabs.saas.appdynamics.com:443"
+  account: "fieldlabs"
   appName: "MyOSCluster"
   serviceAccountName: appdynamics-cluster-agent
-  image: "docker.io/appdynamics/cluster-agent:20.7.0"
+  image: "docker.io/appdynamics/cluster-agent:latest"
   nsToMonitor: [appdynamics,default,dev,stage]
+  instrumentationMethod: Env
+  nsToInstrumentRegex: appdynamics
+  defaultAppName: Above
+  instrumentationRules:
+    - language: java
+      namespaceRegex: appdynamics
+      imageInfo:
+        image: docker.io/appdynamics/java-agent:latest
+        agentMountPath: /opt/appdynamics
+        imagePullPolicy: Always
+      netvizInfo:
+        bciEnabled: false
+        port: 3892
